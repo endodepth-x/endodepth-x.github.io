@@ -86,6 +86,10 @@ h1{font-size:clamp(40px,7.2vw,78px); line-height:1.03; font-weight:700; max-widt
   font-size:13.5px; font-weight:500; background:var(--panel); border:1px solid var(--line); color:var(--muted);
 }
 .pill b{color:var(--txt); font-weight:600}
+.pill.status{
+  font-size:12px; font-weight:600; letter-spacing:.04em;
+  background:rgba(255,145,66,.09); border-color:rgba(255,145,66,.32); color:var(--amber);
+}
 
 /* sections */
 section{padding:84px 0; position:relative; z-index:1; scroll-margin-top:70px}
@@ -219,11 +223,14 @@ footer{border-top:1px solid var(--line); padding:54px 0 44px; background:rgba(0,
 <header id="top">
   <div class="wrap">
     <div class="eyebrow">IEEE ISBI 2027 Challenge</div>
+    <div class="pills" style="margin:0 0 18px">
+      <span class="pill status">Proposal stage — pending ISBI acceptance</span>
+    </div>
     <h1>Depth that survives<br><span class="grad">the real procedure.</span></h1>
     <p class="lede">
       Endoscopic depth models are tested on the same scope, the same tissue and the same clean
       frames they were trained on. <b>EndoDepth-X</b> tests them where it actually matters —
-      on degraded images, and on an endoscope they have never seen.
+      on degraded images the model was never shown.
     </p>
     <div class="pills">
       <span class="pill">📍 <b>EPFL Lausanne</b> · 25–28 May 2027</span>
@@ -242,29 +249,18 @@ footer{border-top:1px solid var(--line); padding:54px 0 44px; background:rgba(0,
       <p>
         Depth estimation is the foundation of endoscopic 3D reconstruction, navigation, lesion sizing
         and surgical AR. When depth quietly fails, everything built on top of it fails too.
-        Participants train on a single public dataset and are scored on data they have never seen,
-        along two tracks. Enter either, or both.
+        Participants train on a single public dataset and are scored on held-back frames of it,
+        corrupted with degradations they never see.
       </p>
     </div>
 
-    <div class="grid-2">
-      <div class="card t1">
-        <div class="tag">Track 1</div>
-        <h3>Degraded images</h3>
-        <p>
-          Same scope, same tissue — but the frame is a mess. Specular glare, motion blur, poor
-          exposure, sensor noise, a fogged lens. Everything that happens in a real procedure and
-          never happens in a benchmark.
-        </p>
-      </div>
-      <div class="card t2">
-        <div class="tag">Track 2</div>
-        <h3>An unfamiliar endoscope</h3>
-        <p>
-          A different scope, different optics, different tissue. The question every clinician
-          eventually asks: does this model work anywhere other than the hospital it was built in?
-        </p>
-      </div>
+    <div class="card t1">
+      <h3>Degraded images</h3>
+      <p>
+        Same scope, same tissue — but the frame is a mess. Specular glare, motion blur, poor
+        exposure, sensor noise, a fogged lens. Everything that happens in a real procedure and
+        never happens in a benchmark.
+      </p>
     </div>
 
     <div class="card" style="margin-top:22px">
@@ -285,9 +281,9 @@ footer{border-top:1px solid var(--line); padding:54px 0 44px; background:rgba(0,
       <div class="sec-k">Dataset</div>
       <h2>The data</h2>
       <p>
-        Built on <b style="color:var(--txt)">SCARED</b> — 35 endoscopic videos with real depth ground
-        truth, from the EndoVis challenge at MICCAI 2019. On top of it we apply the degradations an
-        endoscopic frame actually suffers.
+        Built on <b style="color:var(--txt)">SCARED</b> — nine recording sessions of porcine abdominal
+        anatomy with structured-light depth ground truth, released as an EndoVis sub-challenge at
+        MICCAI 2019. On top of it we apply the degradations an endoscopic frame actually suffers.
       </p>
     </div>
 
@@ -305,7 +301,7 @@ footer{border-top:1px solid var(--line); padding:54px 0 44px; background:rgba(0,
       <div class="stat">
         <div class="big">Hidden</div>
         <h4>Test set</h4>
-        <p>Never downloadable. Unseen images and unpublished degradations, scored inside our infrastructure.</p>
+        <p>Never downloadable. Held-back frames, corrupted with degradations we do not publish. Scored inside our infrastructure.</p>
       </div>
     </div>
 
@@ -378,8 +374,9 @@ footer{border-top:1px solid var(--line); padding:54px 0 44px; background:rgba(0,
     <div class="card" style="margin-top:34px">
       <h3>Awards and recognition</h3>
       <p>
-        Certificates for the top teams in each track, an invited talk at the on-site session at ISBI 2027,
-        and co-authorship on the joint challenge paper for every team that releases its code.
+        Certificates for the top three teams and for Most Robust Method, talks by the top-ranked teams
+        at the on-site session at ISBI 2027, and co-authorship on the joint challenge paper for every
+        team that releases its inference code.
       </p>
     </div>
   </div>
@@ -398,24 +395,28 @@ footer{border-top:1px solid var(--line); padding:54px 0 44px; background:rgba(0,
         <div class="l">Registration opens · training data</div>
       </div>
       <div class="chip">
-        <div class="d">15 Jan</div><div class="y">2027</div>
+        <div class="d">05 Jan</div><div class="y">2027</div>
         <div class="l">Validation data</div>
       </div>
       <div class="chip">
-        <div class="d">01 Feb</div><div class="y">2027</div>
+        <div class="d">25 Jan</div><div class="y">2027</div>
         <div class="l">Test phase opens</div>
       </div>
       <div class="chip">
-        <div class="d">26 Feb</div><div class="y">2027</div>
-        <div class="l">Method papers due</div>
+        <div class="d">12 Feb</div><div class="y">2027</div>
+        <div class="l">Test phase closes</div>
       </div>
       <div class="chip">
-        <div class="d">10 Apr</div><div class="y">2027</div>
-        <div class="l">Final submission</div>
+        <div class="d">18 Feb</div><div class="y">2027</div>
+        <div class="l">Results to participants</div>
+      </div>
+      <div class="chip">
+        <div class="d">26 Feb</div><div class="y">2027</div>
+        <div class="l">ISBI 2027 paper deadline</div>
       </div>
       <div class="chip key">
-        <div class="d">25 May</div><div class="y">2027</div>
-        <div class="l">Winners announced · ISBI, Lausanne</div>
+        <div class="d">25–28 May</div><div class="y">2027</div>
+        <div class="l">On-site session · ISBI, EPFL Lausanne</div>
       </div>
     </div>
   </div>
@@ -449,7 +450,7 @@ footer{border-top:1px solid var(--line); padding:54px 0 44px; background:rgba(0,
       <div class="person">
         <div class="av">RM</div>
         <h4>Rodrigo Medellín-Robles</h4>
-        <p>Challenge infrastructure &amp; evaluation<br>Mexico</p>
+        <p>Universidad Autónoma de Querétaro<br>Mexico</p>
       </div>
     </div>
     <!-- Add "Advisors" and "Contributors" groups here once confirmed:
