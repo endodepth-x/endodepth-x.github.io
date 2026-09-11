@@ -41,11 +41,3 @@ from the paper PDF:
   Corruptions: `ld` (lens distortion), `rc` (resolution change), `sr` (specular
   reflection), `cc` (colour change). Only the `sr` row is used on the page today; the rest
   are cropped and ready for future sections.
-
-## Before this goes public
-
-- [ ] Confirm the challenge is accepted (16 Nov 2026) before removing the "Proposal stage" badge
-- [ ] Replace the `Register` button with the real Grand Challenge URL
-- [ ] Confirm the hidden cross-domain dataset and update the Data section
-- [ ] Swap the contact address for a project address rather than a personal one
-- [ ] Add organizer emails and any additional committee members
